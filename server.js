@@ -12,6 +12,7 @@ app.use(morgan('dev'))
 // Sequelize Models
 const db = require('./models')
 const Category = db.Category
+const Product = db.Category
 
 // Router files
 
