@@ -56,7 +56,6 @@ app.get('/api/products', (req, res, next) => {
 
 app.get('/api/products/:id', (req, res, next) => {
   const id = req.params.id
-
   Product.findByPk(id)
     .then(product => {
       res.json({
