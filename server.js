@@ -10,6 +10,7 @@ const app = express()
 // Middleware
 app.use(cors())
 app.use(morgan('dev'))
+app.use(express.json())  //give body parsing
 
 // Sequelize Models
 const db = require('./models')
@@ -19,14 +20,8 @@ const Product = db.Product
 // Router files
 
 app.post('/api/checkout', async (req, res, next) => {
-  const lineItems = [{
-    name: 'T-shirt',
-    description: 'Comfortable cotton t-shirt',
-    images: ['http://lorempixel.com/400/200/'],
-    amount: 500,
-    currency: 'usd',
-    quantity: 1,
-  }]
+  const lineItem = req.body
+  const lineItems = [lineItem]
 
   try {
     //Create the session
